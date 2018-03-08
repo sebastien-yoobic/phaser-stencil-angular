@@ -1,0 +1,15 @@
+{
+  "name": "phaser-angular-stencil",
+  "version": "0.0.1",
+  "scripts": {
+    "install:sub":
+      "cd angular-app && npm install && cd ../stencil-comps && npm install",
+    "serve":
+      "npm run build:stencil && npm run phaser:assets && cd angular-app && ng serve --open",
+    "phaser:assets":
+      "cp -R stencil-comps/src/assets/game angular-app/src/assets/stencil-build/game-assets",
+    "clean:stencil:build": "rm -rf angular-app/src/assets/stencil-build",
+    "build:stencil":
+      "npm run clean:stencil:build && cd stencil-comps && npm run build"
+  }
+}
