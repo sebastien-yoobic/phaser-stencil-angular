@@ -376,7 +376,6 @@ export class RunnerGame extends AbstractGame {
     this.centeredLabel.setText('GAMEOVER');
     this.pauseLabel.setText('');
     this.isGameOver = true;
-
     //this.gameover.emit(this.score);
   }
 }

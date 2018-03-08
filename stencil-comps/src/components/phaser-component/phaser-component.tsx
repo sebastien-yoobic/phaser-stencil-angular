@@ -1,4 +1,11 @@
-import { Component, Prop, Event, EventEmitter, State } from '@stencil/core';
+import {
+  Component,
+  Prop,
+  Event,
+  EventEmitter,
+  State,
+  Listen
+} from '@stencil/core';
 
 import * as fromGame from '../../lib/game';
 
@@ -18,6 +25,11 @@ export class PhaserComponent {
   @State() b: boolean;
 
   @Event() gameOver: EventEmitter<boolean>;
+
+  @Listen('gameover')
+  handleGameOver() {
+    console.log('gameover listened');
+  }
 
   setGameProps() {
     this.gameProps = {
