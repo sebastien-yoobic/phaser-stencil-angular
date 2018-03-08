@@ -14,7 +14,7 @@ Games are organised with a factory pattern allowing you to easily chose the game
 Clone the repo
 
 ```
-  npm run install:sub
+  npm run install:all
   npm run serve
 ```
 
