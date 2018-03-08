@@ -21,6 +21,8 @@ Clone the repo
 `npm run serve` will build the stencil components in the assets of the angular project, copy the asset of the game 
 from stencil to angular and launch the angular project.
 
+##### PS: you may need to install angular-cli globaly first or change the package.json at the ng command call
+
 ### Informations
 
 Phaser 2.6.2 is used for the moment, next step is to go to Phaser 3.2.0
