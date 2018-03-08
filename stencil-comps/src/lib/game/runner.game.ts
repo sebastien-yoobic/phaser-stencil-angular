@@ -1,5 +1,9 @@
 import { AbstractGame, AbstractGameEntry } from './abstract.game';
 
+export interface RunnerGameEntry extends AbstractGameEntry {
+  inputRunner: number;
+}
+
 function isArray(obj: any): boolean {
   console.log('isArray', obj);
   return true;
@@ -377,9 +381,6 @@ export class RunnerGame extends AbstractGame {
     this.pauseLabel.setText('');
     this.isGameOver = true;
     //this.gameover.emit(this.score);
+    this.gameover.next(true);
   }
-}
-
-export interface RunnerGameEntry extends AbstractGameEntry {
-  inputRunner: number;
 }

@@ -312,7 +312,7 @@ export class CardGame extends AbstractGame {
       this.mainLabel.setText('GAMEOVER');
       // this.mainLabel.addColor(this.gameOptions.correctAnswerColor, 0);
       //this.gameover.emit(this.score);
-      console.log('Emitted from card Game: Game over');
+      this.gameover.next(true);
     }
   }
 

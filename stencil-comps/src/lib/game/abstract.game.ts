@@ -1,3 +1,5 @@
+import { Subject } from 'rxjs/Subject';
+
 export interface AbstractGameEntry {
   // common props of phaser games needed in constructor
   gameWidth: number;
@@ -25,8 +27,11 @@ export class AbstractGame {
   public gameInstance: any;
 
   //@Output() gameover = new EventEmitter<any>();
+  public gameover: Subject<boolean>;
 
-  constructor() {}
+  constructor() {
+    this.gameover = new Subject<boolean>();
+  }
 
   static getRandomInt(min, max) {
     min = Math.ceil(min);

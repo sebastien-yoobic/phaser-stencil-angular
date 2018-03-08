@@ -22,7 +22,7 @@ export class PhaserComponent {
   @Prop() name: string = fromGame.GAME_NAME_CARD;
   @Prop() phaser: any; // Phaser instance imported by the framework
 
-  @State() b: boolean;
+  @State() isGameOver: boolean = false;
 
   @Event() gameOver: EventEmitter<boolean>;
 
@@ -45,21 +45,26 @@ export class PhaserComponent {
 
   init() {
     this.game = fromGame.gameFactory(this.name);
+    this.game.gameover.subscribe(val => {
+      this.isGameOver = val;
+    });
     console.log('game', this.game);
     this.setGameProps();
     this.game.initWithPhaser(this.gameProps, this.phaser);
   }
 
-  tick() {
-    setTimeout(() => {
-      this.b = !this.b;
-      console.log('tick');
-      this.tick();
-    }, 1000);
-  }
-
   componentDidLoad() {
     setTimeout(() => this.init(), 300);
+  }
+
+  componentWillUpdate() {
+    console.log(
+      'Comp Phaser will Upload, isGameOver?, event emitted by Stencil !',
+      this.isGameOver
+    );
+    if (this.isGameOver) {
+      this.gameOver.emit(true);
+    }
   }
 
   render() {
