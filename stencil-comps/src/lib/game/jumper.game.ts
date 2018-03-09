@@ -175,7 +175,7 @@ export class JumperGame extends AbstractGame {
       this.player.anims.play('turn');
     }
     if (this.cursors.up.isDown && this.player.body.touching.down) {
-      this.player.setVelocityY(-530);
+      this.player.setVelocityY(-330);
     }
   }
 
