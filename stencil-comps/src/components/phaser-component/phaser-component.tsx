@@ -1,11 +1,4 @@
-import {
-  Component,
-  Prop,
-  Event,
-  EventEmitter,
-  State,
-  Listen
-} from '@stencil/core';
+import { Component, Prop, Event, EventEmitter, State } from '@stencil/core';
 
 import * as fromGame from '../../lib/game';
 
@@ -19,26 +12,16 @@ export class PhaserComponent {
   private game: fromGame.AbstractGame;
   private fieldId: string = 'game-div';
 
-  @Prop() name: string = fromGame.GAME_NAME_CARD;
+  @Prop() name: string = fromGame.GAME_NAME_JUMPER;
   @Prop() phaser: any; // Phaser instance imported by the framework
 
   @State() isGameOver: boolean = false;
 
   @Event() gameOver: EventEmitter<boolean>;
 
-  @Listen('gameover')
-  handleGameOver() {
-    console.log('gameover listened');
-  }
-
   setGameProps() {
     this.gameProps = {
-      gameHeight: 500,
-      gameWidth: 500,
-      fieldId: this.fieldId,
-      values: [],
-      correctValues: [],
-      wrongValues: []
+      fieldId: this.fieldId
     };
     console.log('gameProps', this.gameProps);
   }
@@ -55,6 +38,7 @@ export class PhaserComponent {
 
   componentDidLoad() {
     setTimeout(() => this.init(), 300);
+    console.log('Phaser from Stencil', this.phaser);
   }
 
   componentWillUpdate() {

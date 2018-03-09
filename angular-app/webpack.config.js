@@ -9,7 +9,8 @@ const autoprefixer = require('autoprefixer');
 const postcssUrl = require('postcss-url');
 const cssnano = require('cssnano');
 const postcssImports = require('postcss-import');
-const stencil = require('@stencil/webpack');
+const stencil = require('@stencil/webpack'); // STENCIL
+const webpack = require('webpack'); // PHASER
 
 const {
   NoEmitOnErrorsPlugin,
@@ -157,6 +158,11 @@ module.exports = {
   },
   module: {
     rules: [
+      // PHASER
+      {
+        test: [/\.vert$/, /\.frag$/],
+        use: 'raw-loader'
+      },
       {
         test: /\.html$/,
         loader: 'raw-loader'
@@ -402,16 +408,17 @@ module.exports = {
     ]
   },
   plugins: [
+    // PHASER
+    new webpack.DefinePlugin({
+      CANVAS_RENDERER: JSON.stringify(true),
+      WEBGL_RENDERER: JSON.stringify(true)
+    }),
     new NoEmitOnErrorsPlugin(),
     new ScriptsWebpackPlugin({
       name: 'scripts',
       sourceMap: true,
       filename: 'scripts.bundle.js',
-      scripts: [
-        '/Users/sebastien/Documents/yoobic/phaser-stencil-angular/angular-app/node_modules/phaser/build/custom/pixi.js',
-        '/Users/sebastien/Documents/yoobic/phaser-stencil-angular/angular-app/node_modules/phaser/build/custom/p2.js',
-        '/Users/sebastien/Documents/yoobic/phaser-stencil-angular/angular-app/node_modules/phaser/build/custom/phaser-split.js'
-      ],
+      scripts: [],
       basePath:
         '/Users/sebastien/Documents/yoobic/phaser-stencil-angular/angular-app'
     }),
