@@ -5,7 +5,7 @@
     "install:all":
       "cd angular-app && npm install && cd ../stencil-comps && npm install",
     "serve":
-      "npm run build:stencil && npm run phaser:assets && cd angular-app && ng serve --open",
+      "npm run build:stencil && npm run phaser:assets && cd angular-app && npm start",
     "phaser:assets":
       "cp -R stencil-comps/src/assets/game angular-app/src/assets/stencil-build/game-assets",
     "clean:stencil:build": "rm -rf angular-app/src/assets/stencil-build",

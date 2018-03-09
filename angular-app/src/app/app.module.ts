@@ -3,6 +3,8 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 
+import '../assets/stencil-build/mycomponent';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule],
