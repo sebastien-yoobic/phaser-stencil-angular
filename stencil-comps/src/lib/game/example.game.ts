@@ -2,12 +2,16 @@ import { AbstractGame, AbstractGameEntry } from './abstract.game';
 
 export const GAME_NAME_EXAMPLE = 'Example';
 
+// The custom entry of a game can be used to set-up different config in the initGameInstance
+// You can see a basic example below
 export interface ExampleEntry extends AbstractGameEntry {
   size?: string;
 }
 
 export class ExampleGame extends AbstractGame {
   config: any;
+  scene: any;
+
   constructor() {
     super();
   }
@@ -49,6 +53,7 @@ export class ExampleGame extends AbstractGame {
 
   getPreloadGame() {
     // implement
+    this.scene = this.gameInstance.scene.scenes[0];
   }
 
   getCreateGame() {

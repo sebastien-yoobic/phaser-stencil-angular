@@ -20,8 +20,7 @@ export class JumperGame extends AbstractGame {
     super();
   }
 
-  // Re implementation of the init game Instance to switch between game configs
-  // config for small/large size for example
+  // Re implementation of the init game Instance to use the proper config
   initGameInstance(phaser: any, props: JumperEntry) {
     this.config = {
       type: phaser.AUTO,
@@ -47,9 +46,6 @@ export class JumperGame extends AbstractGame {
   getPreloadGame() {
     // implement
     this.scene = this.gameInstance.scene.scenes[0];
-    console.log('preload Jumper');
-    console.log('scene', this.scene);
-    console.log('scene load', this.scene.load);
     this.scene.load.image(
       'sky',
       'assets/stencil-build/game-assets/jumper/sky.png'

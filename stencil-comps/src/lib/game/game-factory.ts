@@ -6,5 +6,7 @@ export function gameFactory(name: string): fromGame.AbstractGame {
       return new fromGame.JumperGame();
     case fromGame.GAME_NAME_EXAMPLE:
       return new fromGame.ExampleGame();
+    default:
+      return null;
   }
 }
